@@ -128,7 +128,7 @@ The classes have been categorized by domain to make navigation easier.
 
 - &#9733; 15-411 [**Compiler Design**](https://www.cs.cmu.edu/~15411/), [Seth Goldstein](https://www.cs.cmu.edu/~seth/) and [Ben Titzer](https://s3d.cmu.edu/people/core-faculty/titzer-ben.html)
 
-  There is so much to talk about for this class that I am writing a separate, detailed post for it that you can find here; I recommend reading it if you have any interest in the class. TLDR is that there is a HUGE amount of informative and interesting content covered in the class, which also means that it is a tremendous time commitment (I cannot emphasize this point enough). I believe this class in terms of effort is matched or overshadowed only by Operating Systems (15-410).
+  There is so much to talk about for this class that I am writing a separate, detailed post for it that you can find [here]({{ "/blog/2025/compiler-design-course-experience-cmu" | relative_url }}); I recommend reading it if you have any interest in the class. TLDR is that there is a HUGE amount of informative and interesting content covered in the class, which also means that it is a tremendous time commitment (I cannot emphasize this point enough). I believe this class in terms of effort is matched or overshadowed only by Operating Systems (15-410).
 
 - &hearts; 10-701 **Introduction to Machine Learning**, [Geoff Gordon](https://www.cs.cmu.edu/~ggordon/) and [Max Simchowitz](https://msimchowitz.github.io/)
   {: .course-item #course10701 }
