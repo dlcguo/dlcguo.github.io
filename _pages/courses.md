@@ -18,7 +18,7 @@ Feel free to email or comment below if you have any questions or spot mistakes o
 
 {% assign n = site.data.course_review_blogs.blogs | size %}
 {% assign blogs = site.data.course_review_blogs.blogs | sample: n %}
-Below are some other CMU course review pages, in random order every time this site gets built: 
+Below are some other CMU course review pages, in random order every time this site gets built:
 
 {% for blog in blogs %}[&#10070;]({{ blog }}) {% endfor %}
 
@@ -42,7 +42,7 @@ The classes have been categorized by domain to make navigation easier.
 | Machine Learning and Artificial Intelligence                                       |
 | ---------------------------------------------------------------------------------- |
 | [10-701 Introduction to Machine Learning](#course10701)                            |
-| [15-281 Artificial Intelligence: Representation and Problem Solving](#course15281) |    
+| [15-281 Artificial Intelligence: Representation and Problem Solving](#course15281) |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -50,9 +50,9 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Vision and Robotics
 
-| Computer Vision and Robotics                                                |
-| --------------------------------------------------------------------------- |
-| [16-385 Computer Vision](#course16385)                                      |
+| Computer Vision and Robotics           |
+| -------------------------------------- |
+| [16-385 Computer Vision](#course16385) |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -60,10 +60,10 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Systems
 
-| Computer Systems                                                          |
-| ------------------------------------------------------------------------- |
-| [15-411 Compiler Design](#course15411)                                    |
-| [15-213 Introduction to Computer Systems](#course15213)                   |
+| Computer Systems                                        |
+| ------------------------------------------------------- |
+| [15-411 Compiler Design](#course15411)                  |
+| [15-213 Introduction to Computer Systems](#course15213) |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -71,9 +71,9 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Human-Computer Interaction
 
-| Human-Computer Interaction                                                |
-| ------------------------------------------------------------------------- |
-| [05-318 Human-AI Interaction](#course05318)                               |
+| Human-Computer Interaction                  |
+| ------------------------------------------- |
+| [05-318 Human-AI Interaction](#course05318) |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -94,12 +94,12 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Science - Others
 
-| Computer Science - Others                                          |
-| ------------------------------------------------------------------ |
-| [15-150 Functional Programming](#course15150)                      |
-| [15-122 Principles of Imperative Computation](#course15122)        |
-| [07-131 Great Practical Ideas in Computer Science](#course07131)   |
-| [07-128 First Year Immigration Course](#course07128)               |
+| Computer Science - Others                                        |
+| ---------------------------------------------------------------- |
+| [15-150 Functional Programming](#course15150)                    |
+| [15-122 Principles of Imperative Computation](#course15122)      |
+| [07-131 Great Practical Ideas in Computer Science](#course07131) |
+| [07-128 First Year Immigration Course](#course07128)             |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -107,14 +107,14 @@ The classes have been categorized by domain to make navigation easier.
 
 ### General Education and Everything Else
 
-| General Education and Everything Else                                                 |
-| ------------------------------------------------------------------------------------- |
-| [85-211 Cognitive Psychology](#course85211)                                           |
-| [84-275 Comparative Politics](#course84275)                                           |
-| [82-279 Anime - Visual Interplay between Japan and the World](#course82279)           |
-| [02-261 Quantitative Cellular and Molecular Biology Laboratory](#course02261)         |                       
-| [03-151 Honors Modern Biology](#course03151)                                          |
-| [76-106/76-107 Writing about Literature/Writing about Data](#course76106-76107)       |
+| General Education and Everything Else                                           |
+| ------------------------------------------------------------------------------- |
+| [85-211 Cognitive Psychology](#course85211)                                     |
+| [84-275 Comparative Politics](#course84275)                                     |
+| [82-279 Anime - Visual Interplay between Japan and the World](#course82279)     |
+| [02-261 Quantitative Cellular and Molecular Biology Laboratory](#course02261)   |
+| [03-151 Honors Modern Biology](#course03151)                                    |
+| [76-106/76-107 Writing about Literature/Writing about Data](#course76106-76107) |
 
 {: .table .table-bordered .table-hover .table-sm }
 
@@ -139,7 +139,7 @@ The classes have been categorized by domain to make navigation easier.
   {: .course-item #course15281 }
 
   This class is somewhat infamous for its lack of course structure to the point that it reached the ears of many CS academic advisors. As such, in the coming semesters, this course and the undergraduate intro to machine learning class are being abolished in favor of new, revamped courses. Still, I'll provide some of my thoughts. First off, I don't believe the problems of the course lie in the teaching abilities of the professor, but rather in the disorganized course structure/logistics. There have been many instances of unreasonable or unclear instructions on homework and tests. Aside from that, my personal opinion is that the course fails to fulfill a specific purpose. With the number of topics covered, much of the information from the class is only at the surface level. While it's true that 15-281 is only supposed to be an intro-level class, I feel like this approach, along with how most of the work done is computationally heavy, leaves a weak foundation for subsequent higher-level classes. This is not to mention that topics with weak association to core concepts from the class like AI ethics and game theory get multiple separate lectures which further detract from more in-depth understandings of more important ideas. Adding onto the surface level understanding point, a personal dislike I have about the class is just that because it is essentially just computations, you can succeed in the class just by memorizing steps and not necessarily the rationale behind them. This made the course not difficult, but also not entirely educational. To summarize, I think the course had mostly the right idea in terms of core topics, but poor execution.
-  
+
   This all said, I will note something I and many other people find really helpful the concise but thorough course notes for core topics. These contained basically enough information to get by the entire course. I think that having something similar to this in the revamped version of this class (and in general all classes) should be non-negotiable.
 
 - 05-318 **Human-AI Interaction**, [Haiyi Zhu](https://haiyizhu.com/) and [Motahhare Eslami](https://hcii.cmu.edu/people/motahhare-eslami)
@@ -156,17 +156,17 @@ Units: 60
 
 This had been my heaviest semester yet, mostly due to compilers. The 15 units assigned to the class do not do justice to its actual time commitment; this course took more time than all my other courses this semester combined. I mentioned a disinterest in systems previously [here](#Systems-Disinterest), though I would not include compiler systems in that group anymore. Without a doubt, debugging had still been a major (frustrating) part of my experience where I had to analyze things like assembly code to find what was wrong. However, I ended up really enjoying the algorithmic aspects of compilers like dataflow analysis, graph structures, and optimizations. Since the project was done in OCaml, a functional language, problems generally boiled down to neat recursive solutions which was satisfying.
 
-Something I realized I need to get better at is distributing how I spend my time on work. This hadn't been so much of an issue previously, but I tend to get fixated on wanting to finish one task before starting the next. This wasn't so much of a noticeable issue before, but it became noticeably problematic when having to work on compilers; I ended up spending a lot of time unproductively, for reasons of either needing to go to office hours later or just not thinking clearly out of frustration. 
+Something I realized I need to get better at is distributing how I spend my time on work. This hadn't been so much of an issue previously, but I tend to get fixated on wanting to finish one task before starting the next. This wasn't so much of a noticeable issue before, but it became noticeably problematic when having to work on compilers; I ended up spending a lot of time unproductively, for reasons of either needing to go to office hours later or just not thinking clearly out of frustration.
 
 One thing I experimented with a bit this semester was different forms of note-taking. I wanted to get back into the habit of taking _good_ notes to make the process of reviewing for exams easier. I tried LaTeX, Typst, tablet, and paper notes. My personal findings are that:
 
 1. I think in terms of typeset notes, I definitely prefer Typst of LaTeX. It's generally easier to write and nicer to format, though it comes with the drawback that most of my homework is done in LaTeX so I'm less familiar with Typst.
 
-2. I am not the biggest fan of tablet notes since for me at least, it feels awkward and slower writing on a glass surface than on paper. I don't think I will be doing this often except when I really like a class's notes template or slides (to write on top of). 
+2. I am not the biggest fan of tablet notes since for me at least, it feels awkward and slower writing on a glass surface than on paper. I don't think I will be doing this often except when I really like a class's notes template or slides (to write on top of).
 
 3. Paper notes are my favorite. There's just something incredibly satisfying about writing with a gel pen.
 
-4. With regard to typed vs. written notes, I think that written notes let me retain things better in the sense that I constrain myself to reorganize lecture content in a concise form that makes sense to me. Still, I definitely prefer typed notes for implementation-heavy classes (that are generally project-based) like compilers for efficiency's sake granted I don't need complete familiarity with specific topics, just enough to know where to investigate further in the scenario I don't have enough information. 
+4. With regard to typed vs. written notes, I think that written notes let me retain things better in the sense that I constrain myself to reorganize lecture content in a concise form that makes sense to me. Still, I definitely prefer typed notes for implementation-heavy classes (that are generally project-based) like compilers for efficiency's sake granted I don't need complete familiarity with specific topics, just enough to know where to investigate further in the scenario I don't have enough information.
 
 In general, I'm quite happy with the upper-div courses I'm starting to have access to since they are (surprise, surprise) a lot more in-depth and specific than the intro classes. Of course, that comes with the added difficulty factor but even then it feels rewarding to overcome challenges. Moving forward, I think I am going to be prioritizing taking more machine learning-focused classes.
 
@@ -191,7 +191,7 @@ In general, I'm quite happy with the upper-div courses I'm starting to have acce
 - 85-211 **Cognitive Psychology**, [Zsuzsanna Kocsis](https://www.cmu.edu/ni/people/faculty/zkocsis.html) and [Emilia Ezrina](https://www.cmu.edu/dietrich/psychology/directory/core-training-faculty/emilia-ezrina.html)
   {: .course-item #course85211 }
 
-  I took this to satisfy my category one humanity Gen-Ed requirement, mainly since it counts for both CS + AI major requirements. The course structure was fairly lax, consisting of open-internet exams/quizzes and two short-response homework assignments. While I don't think any of the course content is directly applicable towards honestly any part of my academic goals, I will say that understanding topics such as how the brain functions and the importance of sleep (particularly why) has been helpful. Once in a while, the course also covers some interesting or entertaining experiments such as the [the Wug Test](https://gsas.harvard.edu/news/all-you-need-wug) which is quite nice. If someone happens to need a Gen-Ed requirement from this category, I would definitely direct them to this class. Do keep in mind though that from what I heard, the structure of the course greatly varies between instructors, and that it has been supposedly very time-consuming in iterations taught by other professors. 
+  I took this to satisfy my category one humanity Gen-Ed requirement, mainly since it counts for both CS + AI major requirements. The course structure was fairly lax, consisting of open-internet exams/quizzes and two short-response homework assignments. While I don't think any of the course content is directly applicable towards honestly any part of my academic goals, I will say that understanding topics such as how the brain functions and the importance of sleep (particularly why) has been helpful. Once in a while, the course also covers some interesting or entertaining experiments such as the [the Wug Test](https://gsas.harvard.edu/news/all-you-need-wug) which is quite nice. If someone happens to need a Gen-Ed requirement from this category, I would definitely direct them to this class. Do keep in mind though that from what I heard, the structure of the course greatly varies between instructors, and that it has been supposedly very time-consuming in iterations taught by other professors.
 
 - 15-210 [**Parallel and Sequential Data Structures and Algorithms**](https://www.cs.cmu.edu/~15210/), [Guy Blelloch](https://www.cs.cmu.edu/~guyb/) and [Charlie Garrod](https://www.cs.cmu.edu/~charlie/)
   {: .course-item #course15210 }
@@ -243,7 +243,7 @@ Units: 9
 
   This was just a class to satisfy category two of my general education humanities requirement. Was the class easy? Yes. Did I learn anything? Not really. This course had no homework so it was a relatively low time commitment... I just needed to do a somewhat short reading before every class in preparation for the quiz. The midterms and final were also easy considering that the potential questions are given two weeks before the exam and you just have to prepare responses. So, yeah... the 6/10 in my rating is completely due to the relaxed nature of the class.
 
-- 76-106/76-107 **Writing about Literature/Writing about Data**,  [Chap Morack](https://www.cmu.edu/dietrich/english/about-us/phds/bios/chap-morack.html)/[Ben Markey](https://www.cmu.edu/dietrich/english/about-us/phds/bios/ben-markey.html)
+- 76-106/76-107 **Writing about Literature/Writing about Data**, [Chap Morack](https://www.cmu.edu/dietrich/english/about-us/phds/bios/chap-morack.html)/[Ben Markey](https://www.cmu.edu/dietrich/english/about-us/phds/bios/ben-markey.html)
   {: .course-item #course76106-76107 }
 
   More classes I don't really have much to say about. The classes were both basically entirely participation-based so as long as you did the work, you'd pretty much be guaranteed an A. I guess I was able to read some interesting short stories/research from these classes but the classes as a whole were both boring and felt a bit useless.
@@ -293,7 +293,7 @@ My first semester was honestly the worst out of all mine so far (at this time th
 
 ## CMU Courses FAQs
 
-This section is a modification of Fan Pu's CMU-Specific FAQ found [here](https://fanpu.io/courses/) and aims to provide insight for people unfamiliar with CMU course conventions and/or policies. 
+This section is a modification of Fan Pu's CMU-Specific FAQ found [here](https://fanpu.io/courses/) and aims to provide insight for people unfamiliar with CMU course conventions and/or policies.
 
 ### Course Numbers
 

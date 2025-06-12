@@ -7,9 +7,9 @@ bib_id: 2506.05348v2
 
 ### Important Points
 
-#### 1. Higher Degrees of Freedom (4D) Gaussian Primitives 
+#### 1. Higher Degrees of Freedom (4D) Gaussian Primitives
 
-{% include figure.liquid path="/assets/img/summaries/FreeTimeGS/pipeline.webp" width="600px" class="z-depth-1" 
+{% include figure.liquid path="/assets/img/summaries/FreeTimeGS/pipeline.webp" width="600px" class="z-depth-1"
 caption="FreeTimeGS Pipeline Overview" %}
 
 FreeTimeGS takes a different path from some other recent works. Rather than training a heavy, global deformation field, the authors give each Gaussian primitive with its own simple linear motion function. By only modeling short-range shifts between primitives and the observed scene, this approach sidesteps the ill-posedness of fitting a full warp and keeps optimization both stable and less expensive. Each primitive still learns its spatial position, orientation, scale, velocity, temporal center, duration, opacity, and spherical-harmonic coefficients.
