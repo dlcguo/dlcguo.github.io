@@ -28,7 +28,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Science Theory and Algorithms
 
-| Computer Science Theory and Algorithms                                        |
+|                                         |
 | ----------------------------------------------------------------------------- |
 | [15-251 Great Ideas in Theoretical Computer Science](#course15251)            |
 | [15-210 Parallel and Sequential Data Structures and Algorithms](#course15210) |
@@ -39,7 +39,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Machine Learning and Artificial Intelligence
 
-| Machine Learning and Artificial Intelligence                                       |
+|                                     |
 | ---------------------------------------------------------------------------------- |
 | [10-701 Introduction to Machine Learning](#course10701)                            |
 | [15-281 Artificial Intelligence: Representation and Problem Solving](#course15281) |
@@ -50,7 +50,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Vision and Robotics
 
-| Computer Vision and Robotics           |
+|           |
 | -------------------------------------- |
 | [16-385 Computer Vision](#course16385) |
 
@@ -60,7 +60,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Systems
 
-| Computer Systems                                        |
+|                                    |
 | ------------------------------------------------------- |
 | [15-411 Compiler Design](#course15411)                  |
 | [15-213 Introduction to Computer Systems](#course15213) |
@@ -71,7 +71,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Human-Computer Interaction
 
-| Human-Computer Interaction                  |
+|   |
 | ------------------------------------------- |
 | [05-318 Human-AI Interaction](#course05318) |
 
@@ -81,7 +81,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Mathematics
 
-| Mathematics                                                          |
+|                                                        |
 | -------------------------------------------------------------------- |
 | [36-218 Probability Theory for Computer Scientists](#course36218)    |
 | [21-266 Vector Calculus for Computer Scientists](#course21266)       |
@@ -94,7 +94,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### Computer Science - Others
 
-| Computer Science - Others                                        |
+|                           |
 | ---------------------------------------------------------------- |
 | [15-150 Functional Programming](#course15150)                    |
 | [15-122 Principles of Imperative Computation](#course15122)      |
@@ -107,7 +107,7 @@ The classes have been categorized by domain to make navigation easier.
 
 ### General Education and Everything Else
 
-| General Education and Everything Else                                           |
+|                                      |
 | ------------------------------------------------------------------------------- |
 | [85-211 Cognitive Psychology](#course85211)                                     |
 | [84-275 Comparative Politics](#course84275)                                     |
