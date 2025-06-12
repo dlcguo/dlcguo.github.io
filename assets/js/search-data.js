@@ -55,8 +55,8 @@ ninja.data = [{
           window.location.href = "/blog/2025/compiler-design-course-experience-cmu/";
         
       },
-    },{id: "news-",
-          title: '',
+    },{id: "news-website-revamp-done",
+          title: 'Website revamp done!',
           description: "",
           section: "News",},{id: "projects-lucas-kanade-video-tracking",
           title: 'Lucas-Kanade Video Tracking',
