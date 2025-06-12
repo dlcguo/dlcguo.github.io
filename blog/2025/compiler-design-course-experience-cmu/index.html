@@ -3,7 +3,7 @@
 2
 3
 </pre></td> <td class="code"><pre><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15411</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">foo</span><span class="p">();</span>
+  <span class="n">foo</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Equivalently, this can be defined as:</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -14,19 +14,19 @@
 6
 7
 </pre></td> <td class="code"><pre><span class="p">{</span>
-<span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15411</span><span class="p">)</span> <span class="p">{</span>
-<span class="n">foo</span><span class="p">();</span>
-<span class="n">i</span><span class="o">++</span><span class="p">;</span>
-<span class="p">}</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="mi">15411</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">foo</span><span class="p">();</span>
+    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Note that it is important to retain the scope of <code class="language-plaintext highlighter-rouge">i</code> for semantic purposes. So, <code class="language-plaintext highlighter-rouge">for</code> loops end up boiling down to being glorified <code class="language-plaintext highlighter-rouge">while</code> loops! We can do similar things with unary operators, as well as elaborate logical operators <code class="language-plaintext highlighter-rouge">&amp;&amp;</code> and <code class="language-plaintext highlighter-rouge">||</code> into ternary operators. Nifty right? So, by reducing the number of available operators, we also reduce the number of subsequent logics we must account for. That said, one must be cautious when elaborating on certain operators. Otherwise, semantic information may be lost/altered, or an optimization opportunity may no longer be possible.</p> <h4 id="typechecking">Typechecking</h4> <p>Typechecking in a statically-typed language like C0 can be done by recursively traversing the AST and ensuring that each construct satisfies the language’s typing rules. Viewed mathematically, this is the same as chaining a sequence of inference rules to derive the conclusion that an expression or statement is well-typed. OCaml’s algebraic data types and pattern-matching map directly onto AST variants and their typing rules, making it a natural fit. For example, say we have the following OCaml data type:</p> <figure class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 2
 3
 </pre></td> <td class="code"><pre><span class="k">type</span> <span class="n">expr</span> <span class="o">=</span>
-<span class="o">|</span> <span class="nc">Binop</span> <span class="k">of</span> <span class="p">{</span> <span class="n">lhs</span><span class="o">:</span> <span class="n">expr</span><span class="p">;</span> <span class="n">op</span><span class="o">:</span> <span class="n">binop</span><span class="p">;</span> <span class="n">rhs</span><span class="o">:</span> <span class="n">expr</span> <span class="p">}</span>
-<span class="o">|</span> <span class="o">...</span>
+  <span class="o">|</span> <span class="nc">Binop</span> <span class="k">of</span> <span class="p">{</span> <span class="n">lhs</span><span class="o">:</span> <span class="n">expr</span><span class="p">;</span> <span class="n">op</span><span class="o">:</span> <span class="n">binop</span><span class="p">;</span> <span class="n">rhs</span><span class="o">:</span> <span class="n">expr</span> <span class="p">}</span>
+  <span class="o">|</span> <span class="o">...</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Then, we can typecheck the <code class="language-plaintext highlighter-rouge">Binop</code> node by making recursive calls to retrieve the types of <code class="language-plaintext highlighter-rouge">lhs</code> and <code class="language-plaintext highlighter-rouge">rhs</code> (while verifying that they are well-typed) before checking that the retrieved types are compatible with <code class="language-plaintext highlighter-rouge">op</code>.</p> <p>Of course, we will note that scope and other semantic details are relevant and can be kept track of by including an environment state parameter in the typechecking recursion logic. So, our logic would be something like this:</p> <figure class="highlight"><pre><code class="language-ocaml" data-lang="ocaml"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 2
@@ -37,11 +37,11 @@
 7
 </pre></td> <td class="code"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">typecheck_expr</span> <span class="n">env</span> <span class="n">expr</span> <span class="o">:</span> <span class="n">expr_type</span> <span class="o">=</span>
 <span class="k">match</span> <span class="n">expr</span> <span class="k">with</span>
-<span class="o">|</span> <span class="nc">Binop</span> <span class="p">{</span><span class="n">lhs</span><span class="p">;</span> <span class="n">op</span><span class="p">;</span> <span class="n">rhs</span><span class="p">}</span> <span class="o">-&gt;</span>
-<span class="k">let</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">typecheck_expr</span> <span class="n">env</span> <span class="n">lhs</span> <span class="k">in</span>
-<span class="k">let</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">typecheck_expr</span> <span class="n">env</span> <span class="n">rhs</span> <span class="k">in</span>
-<span class="k">if</span> <span class="n">compatible</span> <span class="n">op</span> <span class="n">t1</span> <span class="n">t2</span> <span class="k">then</span> <span class="n">result_type</span> <span class="n">op</span> <span class="k">else</span> <span class="n">error</span> <span class="o">...</span>
-<span class="o">|</span> <span class="o">...</span>
+  <span class="o">|</span> <span class="nc">Binop</span> <span class="p">{</span><span class="n">lhs</span><span class="p">;</span> <span class="n">op</span><span class="p">;</span> <span class="n">rhs</span><span class="p">}</span> <span class="o">-&gt;</span>
+    <span class="k">let</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">typecheck_expr</span> <span class="n">env</span> <span class="n">lhs</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">typecheck_expr</span> <span class="n">env</span> <span class="n">rhs</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="n">compatible</span> <span class="n">op</span> <span class="n">t1</span> <span class="n">t2</span> <span class="k">then</span> <span class="n">result_type</span> <span class="n">op</span> <span class="k">else</span> <span class="n">error</span> <span class="o">...</span>
+  <span class="o">|</span> <span class="o">...</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <h4 id="dangling-else">Dangling Else</h4> <p>What is the dangling else (problem)? Consider the following statement:</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 </pre></td> <td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="n">outer_cond</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">nested_cond</span><span class="p">)</span> <span class="n">nested_stm</span><span class="p">;</span> <span class="k">else</span> <span class="p">(</span><span class="n">outer_stm</span><span class="p">);</span>
@@ -55,10 +55,10 @@
 7
 </pre></td> <td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="n">outer_cond</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">nested_cond</span><span class="p">)</span>
-<span class="n">nested_stm</span><span class="p">;</span>
-<span class="k">else</span>
-<span class="n">outer_stm</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nested_cond</span><span class="p">)</span>
+    <span class="n">nested_stm</span><span class="p">;</span>
+  <span class="k">else</span>
+    <span class="n">outer_stm</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -70,14 +70,14 @@
 7
 </pre></td> <td class="code"><pre><span class="k">if</span> <span class="p">(</span><span class="n">outer_cond</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">nested_cond</span><span class="p">)</span>
-<span class="n">nested_stm</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">nested_cond</span><span class="p">)</span>
+    <span class="n">nested_stm</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">else</span>
-<span class="n">outer_stm</span><span class="p">;</span>
-</pre></td> </tr></tbody></table></code></pre></figure> <p>Notice that it is ambiguous how the nested conditional statements are interpreted. This is a problem concerning parser generators when the language allows for an optional <code class="language-plaintext highlighter-rouge">else</code> clause in an <code class="language-plaintext highlighter-rouge">if</code>-<code class="language-plaintext highlighter-rouge">then</code>(-<code class="language-plaintext highlighter-rouge">else`) statement. In languages like C, the dangling else is dealt with by always pairing each `else`with the nearest unmatched`if`. A way to enforce this in your grammar is to distinguish open statements (those lacking a matched `else`) from closed statements (those with a matched `else</code>`). I’ll link the <a href="https://dl.acm.org/doi/10.1145/365813.365821" rel="external nofollow noopener" target="_blank">original paper</a> and a <a href="https://en.wikipedia.org/wiki/Dangling_else" rel="external nofollow noopener" target="_blank">wikipedia article</a> if you want to read up on the specifics.</p> <h4 id="lexer-hack">Lexer Hack</h4> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
+  <span class="n">outer_stm</span><span class="p">;</span>
+</pre></td> </tr></tbody></table></code></pre></figure> <p>Notice that it is ambiguous how the nested conditional statements are interpreted. This is a problem concerning parser generators when the language allows for an optional <code class="language-plaintext highlighter-rouge">else</code> clause in an <code class="language-plaintext highlighter-rouge">if</code>-<code class="language-plaintext highlighter-rouge">then</code>(-<code class="language-plaintext highlighter-rouge">else</code>) statement. In languages like C, the dangling else is dealt with by always pairing each <code class="language-plaintext highlighter-rouge">else</code> with the nearest unmatched <code class="language-plaintext highlighter-rouge">if</code>. A way to enforce this in your grammar is to distinguish open statements (those lacking a matched <code class="language-plaintext highlighter-rouge">else</code>) from closed statements (those with a matched <code class="language-plaintext highlighter-rouge">else</code>). I’ll link the <a href="https://dl.acm.org/doi/10.1145/365813.365821" rel="external nofollow noopener" target="_blank">original paper</a> and a <a href="https://en.wikipedia.org/wiki/Dangling_else" rel="external nofollow noopener" target="_blank">wikipedia article</a> if you want to read up on the specifics.</p> <h4 id="lexer-hack">Lexer Hack</h4> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
-</pre></td> <td class="code"><pre><span class="n">A</span> <span class="err">\</span><span class="o">*</span> <span class="n">B</span><span class="p">;</span>
+</pre></td> <td class="code"><pre><span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">;</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>In a compiler, the lexer first scans the source code to produce a stream of tokens. The parser then analyzes that token stream, matching it against grammar rules that define language constructs. Sometimes, however, a single sequence of tokens can satisfy more than one rule. In C, for example, the snippet above can be parsed either as a multiplication expression or as a declaration of B as a pointer to type A.</p> <p>This ambiguity stems from the fact that the lexer does not distinguish between ordinary identifiers and typedef names. This is known as the “typedef-name: identifier” problem. A common solution is to report back to the symbol table during lexing. When the lexer encounters an identifier, it checks whether that name has been declared as a type and produces a different token accordingly. While this resolves the ambiguity, it is called a hack because it breaks the separation between the lexing and parsing stages.</p> <h3 id="optimizations">Optimizations</h3> <p>Now, we’ll go a bit into some of the simpler optimizations that my partner and I implemented to provide a feel for what kind of techniques exist.</p> <h4 id="tail-call-optimization">Tail Call Optimization</h4> <p>Many of my classes talked a lot about making recursive function tail calls. I didn’t really understand the importance until having to implement it myself. If you are not aware what tail call functions are, consider the following:</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 2
@@ -93,17 +93,17 @@
 12
 13
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">fact</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">){</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">return</span> <span class="n">n</span> <span class="err">\</span><span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">fact</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">fact_tail</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">acc</span><span class="p">){</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">acc</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">return</span> <span class="n">fact_tail</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="err">\</span><span class="o">*</span> <span class="n">acc</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">acc</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">fact_tail</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="n">acc</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Observe that we have written a factorial function twice, granted the second must be called slightly differently for equivalent results. Informally, a function is considered a tail call if it directly returns the result of a recursive call to itself. Therefore, it should be clear why the first is not a tail call.</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -116,13 +116,13 @@
 8
 9
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">fact_tail</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">acc</span><span class="p">){</span>
-<span class="nl">base_case:</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">acc</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="n">acc</span> <span class="o">=</span> <span class="n">n</span> <span class="err">\</span><span class="o">*</span> <span class="n">acc</span><span class="p">;</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-<span class="k">goto</span> <span class="n">base_case</span><span class="p">;</span>
+  <span class="nl">base_case:</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="n">acc</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">acc</span><span class="p">;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">goto</span> <span class="n">base_case</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Tail call recursive functions can easily be converted into a non-recursive function using <code class="language-plaintext highlighter-rouge">goto</code> instructions. This transformation eliminates all function-call overhead (no more pushing return addresses or arguments onto the stack) and prevents stack overflow for deep recursions.</p> <p>With a bit of extra work, even functions that aren’t originally written in tail call form can often be refactored into a tail call equivalent form. <code class="language-plaintext highlighter-rouge">fact</code> is a classic example.</p> <h4 id="inlining">Inlining</h4> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -133,18 +133,18 @@
 6
 7
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-<span class="k">return</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Function inlining is a very simple optimization. As hinted by its name, it essentially involves unrolling a function whenever the function gets called. With the above example, if we inline <code class="language-plaintext highlighter-rouge">add</code>, then we now have</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
 2
 3
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-<span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>You might be wondering, does this actually do anything? Well, for starters, it eliminates function-call overhead. Besides that, a recurring theme about optimizations is that they often improve the effectiveness of each other. By inlining, you expose formerly hidden expressions to passes like constant propagation, constant folding, and common subexpression elimination across what used to be function boundaries. Taking a look above again, we can see that inlining <code class="language-plaintext highlighter-rouge">add</code> enables <code class="language-plaintext highlighter-rouge">1 + 2</code> to be constant folded into <code class="language-plaintext highlighter-rouge">3</code>!</p> <p>But should you inline every function? Absolutely not. Inlining tends to increase code size, which can hurt instruction-cache locality and other hardware-related details. It also merges the callee’s locals and temporaries into the caller’s scope, lengthening live ranges and enlarging basic blocks. The result is higher register pressure which can lead to spilling registers onto the stack. When registers spill onto the stack, these loads and stores can reduce the very speed gains you hoped to increase.</p> <p>Therefore, using this optimization effectively ultimately boils down to having a good heuristic on what functions to inline. Some things to consider are being recursive, the number of instructions, and the number of times the function is called.</p> <h4 id="common-subexpression-elimination">Common Subexpression Elimination</h4> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -154,10 +154,10 @@
 5
 6
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-<span class="kt">int</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">a</span> <span class="n">_</span> <span class="n">b</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">a</span> <span class="n">_</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">t3</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="n">_</span> <span class="n">b</span><span class="p">)</span> <span class="n">_</span> <span class="mi">2</span><span class="p">;</span>
-<span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t3</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Observe that <code class="language-plaintext highlighter-rouge">a * b</code> is recomputed multiple times. This is unnecessary and can instead rewritten as:</p> <figure class="highlight"><pre><code class="language-c" data-lang="c"><table class="rouge-table"><tbody><tr>
 <td class="gutter gl"><pre class="lineno">1
@@ -168,11 +168,11 @@
 6
 7
 </pre></td> <td class="code"><pre><span class="kt">int</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">,</span> <span class="kt">int</span> <span class="n">c</span><span class="p">)</span> <span class="p">{</span>
-<span class="kt">int</span> <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span> <span class="n">_</span> <span class="n">b</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">prod</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">prod</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">t3</span> <span class="o">=</span> <span class="n">prod</span> <span class="n">_</span> <span class="mi">2</span><span class="p">;</span>
-<span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">prod</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">prod</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">prod</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">t3</span> <span class="o">=</span> <span class="n">prod</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">t1</span> <span class="o">+</span> <span class="n">t2</span> <span class="o">+</span> <span class="n">t3</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></td> </tr></tbody></table></code></pre></figure> <p>Simple enough, right? Common subexpression elimination works by looking for instances where the same expression (with the same operands) is computed multiple times and replaces the redundant computations with a single, shared value.</p> <h4 id="important-note-on-optimizations">Important Note on Optimizations</h4> <p>Although many optimizations are intuitive, applying them safely in a real compiler requires detailed analyses to determine when they’re valid. In practice, each optimization is backed by its own analysis pass.</p> <h3 id="course-thoughts">Course Thoughts</h3> <p>This course had been such a rollercoaster. I won’t lie, after implementing SSA completely broke our submission before the deadline of Lab 2, I was debating whether or not to drop the course. It all worked out in the end still, since it turned out we weren’t the only group that had a fair share of troubles. There ended up being a somewhat generous curve that brought our grades to an A.</p> <p>One thing I thought was a really creative and surprisingly fun part of the course was the fact that all test cases are student-submitted. This meant that there were inevitably quite a few groups who tried their hardest to break other groups’ compilers. My friends and I would exchange war stories about whose compiler survived [Group] Bob Parr’s timeouts…</p> <p>I probably would have enjoyed the class a lot more if we didn’t have such an incident in the first half of the class. The content was hard but rewarding, and the TAs were incredibly open to providing valuable insight. Not only were the instructors passionate and engaging in their lectures, but they also went the extra mile by providing breakfast at every session. We even got to learn more about future careers in compilers from talks by Apple and Jane Street representatives.</p> <h3 id="personal-takeaways">Personal Takeaways</h3> <h4 id="plan-thoroughly">Plan Thoroughly</h4> <p>I can’t overstate how much early design decisions came back to haunt me. Representing registers as plain strings, for example, was a major headache: string functions are troublesome to work with, and a single typo or capitalization mismatch could introduce subtle, hard-to-detect bugs. A far better approach would have been to define a dedicated register datatype or variant, enabling the OCaml type system to enforce correctness and simplifying pattern matches.</p> <p>In general, I see now effective planning isn’t just about choosing an option that works today; it’s about anticipating the compounding effects of that choice and guarding against future pitfalls. I suppose I have to thank this class’s open-ended nature for teaching me this.</p> <h4 id="be-modular">Be Modular</h4> <p>I underestimated how often I’d need to share the same graph structures and utility functions across multiple files. In hindsight, I should have made those components generic from day one. Instead, I spent a significant amount of time re-writing nearly identical classes and helper routines. Even when I did attempt more modular designs, I often ended up with glue code just to translate between slightly different type definitions, which defeated the purpose of reuse.</p> <p>On top of that, it was my first exposure to OCaml’s type system, so I wasn’t aware that you can reference types from one module to another. As a result, I wrote a lot of icky conversion functions to bridge semantically equivalent types. Working with function parameters that varied by a few type constructors became incredibly frustrating.</p> <p>Looking back, these patterns left our codebase overly fragmented and bloated. This has honestly given me first-hand experience of the importance of modularity.</p> <h4 id="write-maintainable-code">Write Maintainable Code</h4> <p>To be quite frank, our codebase was somewhat of a mess to work with. Sparse documentation meant we often spent significant time deciphering each other’s code and sometimes even our own. Furthermore, as noted in <strong>Plan Thoroughly</strong>, certain implementations that worked initially quickly became inflexible when it came time to extend functionality. For instance, overusing wildcards in pattern matches caused us to miss unhandled cases. In hopes of minimizing my encounters with these terrible experiences again, I strive now, more than ever, to write code that is easy to build on top of.</p> <h4 id="better-testing">Better Testing</h4> <p>I don’t have too much to say about this section, but creating scripts early on to test different parts of the compiler would have been incredibly beneficial for identifying what stage of the pipeline went wrong. Instead, we really only had automated tests for the final outputs.</p> <h4 id="concluding-thoughts">Concluding Thoughts</h4> <p>I cannot begin to describe how much this course has taught me, not only in targetted course content, but important practices as a developer that I plan to keep close by. If you have any interest in systems, definitely take this course. If you don’t have that much of an opinion on systems, but have some time to spare, also take this course. I was in the latter category and still found the content incredibly interesting. While I might not go into specializing/working in compilers, knowing how these things work under the hood will definitely be beneficial long-term in writing more performant code.</p> </div> </article> <div id="giscus_thread" style="max-width: 930px; margin: 0 auto;"> <script>
       let giscusTheme = determineComputedTheme();
