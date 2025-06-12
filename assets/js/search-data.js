@@ -58,7 +58,12 @@ ninja.data = [{
     },{id: "news-website-revamp-done",
           title: 'Website revamp done!',
           description: "",
-          section: "News",},{id: "projects-lucas-kanade-video-tracking",
+          section: "News",},{id: "projects-c0-compiler-and-runtime-system",
+          title: 'C0 Compiler and Runtime System',
+          description: "SSA-based optimized compiler for C0 (CMU&#39;s memory-safe C subset)",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/compiler/";
+            },},{id: "projects-lucas-kanade-video-tracking",
           title: 'Lucas-Kanade Video Tracking',
           description: "an implementation of 3 basic tracking algorithms",
           section: "Projects",handler: () => {
