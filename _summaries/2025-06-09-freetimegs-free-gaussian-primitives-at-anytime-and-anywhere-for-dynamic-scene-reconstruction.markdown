@@ -24,7 +24,7 @@ While 4D regularization improves rendering quality, it often increases the numbe
 
 ### Critique
 
-I would have liked a comparison with the [Shape of Motion](https://arxiv.org/pdf/2407.13764) paper since FreeTimeGS and Shape of Motion are quite similar in using linear transformations for individual Gaussians.
+I would have liked a comparison with the [Shape of Motion](https://arxiv.org/pdf/2407.13764) paper since FreeTimeGS and Shape of Motion are quite similar in assigning linear transformations to individual Gaussians.
 
 ### Concluding Thoughts
 
