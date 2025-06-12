@@ -1,0 +1,17 @@
+**/*.map
+**/*.min.css
+**/*.min.js
+assets/css/main.scss
+assets/js/distillpub/template.v2.js
+assets/js/search/*.js
+assets/plotly/demo.html
+lighthouse_results/**
+_posts/2015-10-20-math.md
+_sass/font-awesome/*.scss
+_sass/tabler-icons/*.scss
+_scripts/search.liquid.js
+_summaries/2024-08-05-reconciling-modern-machine-learning-practice-and-the-bias-variance-trade-off.markdown
+_posts/*.markdown
+assets/js/*.js
+assets/css/*.css
+assets/js/distillpub/*.js
