@@ -55,13 +55,7 @@ ninja.data = [{
           window.location.href = "/blog/2025/compiler-design-course-experience-cmu/";
         
       },
-    },{id: "news-fasdf",
-          title: 'fasdf',
-          description: "",
-          section: "News",},{id: "news-",
-          title: '',
-          description: "",
-          section: "News",},{id: "projects-lucas-kanade-video-tracking",
+    },{id: "projects-lucas-kanade-video-tracking",
           title: 'Lucas-Kanade Video Tracking',
           description: "an implementation of 3 basic tracking algorithms",
           section: "Projects",handler: () => {
