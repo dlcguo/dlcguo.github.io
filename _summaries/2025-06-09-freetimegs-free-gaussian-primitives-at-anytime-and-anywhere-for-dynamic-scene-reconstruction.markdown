@@ -24,8 +24,8 @@ While 4D regularization improves rendering quality, it often increases the numbe
 
 ### Critique
 
-I would have liked a comparison with the [Shape of Motion](https://arxiv.org/pdf/2407.13764) paper since FreeTimeGS and Shape of Motion are very similar in using linear transformations for individual Gaussians.
+I would have liked a comparison with the [Shape of Motion](https://arxiv.org/pdf/2407.13764) paper since FreeTimeGS and Shape of Motion are quite similar in using linear transformations for individual Gaussians.
 
 ### Concluding Thoughts
 
-Despite mentions of relying on per-scene optimization and not supporting relighting, I think this work is promising in the sense of significantly outperforming other SOTA models.
+Despite mentions of relying on per-scene optimization and not supporting relighting, I think this work is promising just from the merit of significantly outperforming other SOTA models.
