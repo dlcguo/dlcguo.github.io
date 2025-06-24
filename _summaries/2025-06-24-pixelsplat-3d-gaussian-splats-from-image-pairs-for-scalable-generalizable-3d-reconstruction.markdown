@@ -14,38 +14,50 @@ In 3D-GS, Gaussian primitives initialized randomly must move through space to ar
 pixelSplat revisits Adaptive Density Control via a differentiable reparameterization trick. It roughly goes like this:
 
 1. For each pixel, the network outputs logits which are softmaxed into a discrete distribution
+
    $$
    \phi = [\phi_1, \phi_2, \dots, \phi_Z], 
    \quad
    \phi_z = P(z)
    $$
+
    over $Z$ predefined depth-bins.
 
 2. Sample
+
    $$
    z \sim \mathrm{Categorical}(\phi)\,,
    $$
+   
    to choose a bin index. Then, calculate the depth:
+   
    $$
    d = b_z + \delta_z
    $$
+   
    (where $b_z$ is the bin center and $\delta_z$ a learned offset), and unproject along the camera ray:
+
    $$
    \mu = o + d \, d_u
    $$
+   
    with camera origin $o$ and ray direction $d_u$.
 
 3. Instead of a hard spawn/prune, set the Gaussian's opacity to
+
    $$
    \alpha = \phi_z\,.
    $$
+
    During backpropagation, by the chain rule:
+
    $$
    \frac{\partial L}{\partial \phi_z}
    = \frac{\partial L}{\partial \alpha}
      \frac{\partial \alpha}{\partial \phi_z}
    = \frac{\partial L}{\partial \alpha}\,,
    $$
+   
    effectively "reparameterizing" the sampling step and allowing gradients to update $\phi$ directly.
 
 By restructuring Adaptive Density Control into a probabilistic sampling approach combined with the reparameterization trick, PixelSplat generates Gaussians where the loss indicates that more density is needed, and prunes in low-error regions while remaining differentiable.
