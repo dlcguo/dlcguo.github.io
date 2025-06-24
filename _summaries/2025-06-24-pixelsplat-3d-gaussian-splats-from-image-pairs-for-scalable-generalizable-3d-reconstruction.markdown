@@ -25,7 +25,7 @@ pixelSplat revisits Adaptive Density Control via a differentiable reparameteriza
    $$
    z \sim \mathrm{Categorical}(\phi)\,,
    $$
-   to choose a bin index. Then, calculate the depth
+   to choose a bin index. Then, calculate the depth:
    $$
    d = b_z + \delta_z
    $$
