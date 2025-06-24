@@ -25,11 +25,11 @@ pixelSplat revisits Adaptive Density Control via a differentiable reparameteriza
    $$
    z \sim \mathrm{Categorical}(\phi)\,,
    $$
-   then recover a continuous depth
+   to choose a bin index. Then, calculate the depth
    $$
    d = b_z + \delta_z
    $$
-   (where $b_z$ is the bin center and $\delta_z$ a learned offset), and unproject:
+   (where $b_z$ is the bin center and $\delta_z$ a learned offset), and unproject along the camera ray:
    $$
    \mu = o + d \, d_u
    $$
