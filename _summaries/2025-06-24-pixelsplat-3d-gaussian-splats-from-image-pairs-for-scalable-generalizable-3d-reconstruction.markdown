@@ -29,7 +29,7 @@ pixelSplat revisits Adaptive Density Control via a differentiable reparameteriza
    $$
    d = b_z + \delta_z
    $$
-   (where \(b_z\) is the bin center and \(\delta_z\) a learned offset), and unproject:
+   (where $b_z$ is the bin center and $\delta_z$ a learned offset), and unproject:
    $$
    \mu = o + d \, d_u
    $$
