@@ -78,6 +78,11 @@ ninja.data = [{
           description: "",
           section: "Summaries",handler: () => {
               window.location.href = "/summaries/2025-06-09-freetimegs-free-gaussian-primitives-at-anytime-and-anywhere-for-dynamic-scene-reconstruction/";
+            },},{id: "summaries-pixelsplat-3d-gaussian-splats-from-image-pairs-for-scalable-generalizable-3d-reconstruction",
+          title: 'pixelSplat: 3D Gaussian Splats from Image Pairs for Scalable Generalizable 3D Reconstruction',
+          description: "",
+          section: "Summaries",handler: () => {
+              window.location.href = "/summaries/2025-06-24-pixelsplat-3d-gaussian-splats-from-image-pairs-for-scalable-generalizable-3d-reconstruction/";
             },},{
         id: 'social-email',
         title: 'email',
